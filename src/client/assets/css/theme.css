@@ -1,14 +1,10 @@
 :root {
-  --darkblue: #021433;
-  --lightblue:#8fcaf1;
-  --blue:#0099ff;
-  --lightgrey:#cccccc;
-  --darkgrey:#636668;
-  --grey-100:#eeeeee;
-  --white: #fff;
-  --accordian_blue:#e5f1f7;
-  --button_blue:#0173b2;
-  --plan-user:#cce3f0;
+  --primarycolor: #342452;
+  --secondarycolor: #4E3764;
+  --white: #FFFFFF;
+  --filledbtn: #6647CD;
+  --grey: #cccccc;
+  --darkgrey: #636668;
   --popular_green:#008000;
   --red:#f80808;
   font-size: 16px;
@@ -32,8 +28,7 @@
 h1, h2, h3, h4, h5, h6 {
   font-family: nexa-bold;
   line-height: 1.2;
-  margin-bottom: 1.25rem;
-  color: var(--darkblue);
+  color: var(--primarycolor);
 }
 
 h1 {
@@ -60,12 +55,15 @@ h6 {
   font-size: 1.05rem;
 }
 
+i {
+  font-size: 1rem;
+}
+
 p {
   font-family: nexa-light;
   font-size: 1rem;
   line-height: 1.4;
   color: var(--darkblue);
-  margin-bottom: 1.25rem;
 }
 
 ul li, ol li {
@@ -78,7 +76,6 @@ ul li, ol li {
 input {
   padding: 0.625rem;
   margin-bottom: 0.625rem;
-  border: 1px solid var(--white);
   width: 100%;
   font-size: 0.9rem;
   font-family: nexa-light;
@@ -103,25 +100,25 @@ input[type="checkbox"] {
 
 ::-webkit-input-placeholder {
   font-family: nexa-bold;
-  color: var(--lightgrey);
+  color: var(--grey);
   font-size: 0.9rem;
 }
 
 :-ms-input-placeholder {
   font-family: nexa-bold;
-  color: var(--lightgrey);
+  color: var(--grey);
   font-size: 0.9rem;
 }
 
 ::-ms-input-placeholder {
   font-family: nexa-bold;
-  color: var(--lightgrey);
+  color: var(--grey);
   font-size: 0.9rem;
 }
 
 ::placeholder {
   font-family: nexa-bold;
-  color: var(--lightgrey);
+  color: var(--grey);
   font-size: 0.9rem;
 }
 
@@ -145,7 +142,7 @@ img {
 }
 
 button {
-  font-family: nexa-light;
+  font-family: nexa-bold;
   font-size: 1rem;
   padding: 0.625rem 1rem;
   border: 1px solid var(--darkblue);
@@ -156,12 +153,12 @@ button {
 
 .dark-button {
   color: var(--white);
-  background-color: var(--darkblue);
+  background-color: var(--filledbtn);
 }
 
 .light-button {
-  color: var(--darkblue);
-  background-color: var(--white);
+  color: var(--white);
+  background-color: var(--primarycolor);
 }
 
 .light-blue_button {
@@ -211,9 +208,6 @@ textarea {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 0.725rem;
-  }
   h1 {
     font-size: 2rem;
   }
@@ -287,9 +281,6 @@ textarea {
 }
 
 @media only screen and (min-width: 1024px) {
-  h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 1rem;
-  }
   h1 {
     font-size: 2.5rem;
   }

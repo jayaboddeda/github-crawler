@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Crawler</title>
+    <link rel="icon" href="../assets/images/GitHub_desktop_logo.png">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/theme.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+</head>
+<%if (user.theme=="true" ) {%>
+
+    <body class="darktheme">
+
+        <% }else{%>
+
+            <body>
+                <% } %>
+                    <header>
+                        <nav>
+                            <div class="header-left">
+                                <figure class="logo">
+                                    <img src="../assets/images/GitHub_desktop_logo.png" alt="logo">
+                                </figure>
+
+                                <!-- <div class="searchbar header-search">
+
+                                    <form action="/search" method="post">
+                                        <input type="text" placeholder="Search by Username or name">
+                                    </form>
+                                </div> -->
+                            </div>
+                            <div class="header-right">
+                                <div class="username">
+                                    <p>
+                                        <%= user.name %>
+                                    </p>
+                                    <i class="fas fa-angle-down"></i>
+                                </div>
+                                <div class="user-menu">
+                                    <ul class="user-menu-list">
+                                        <li class="theme-btn">
+                                            <form action="/themepost" method="post">
+
+                                                <span>Dark Theme</span>
+                                                <label class="switch" data-theme=<%=user.theme%>>
+
+                                                    <input name="darktheme" type="checkbox"
+                                                        onchange="this.form.submit()">
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </form>
+
+                                        </li>
+
+                                        <a href="/logout">
+                                            <li>Logout</li>
+                                        </a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </header>
+                    <%-include("partials/alerts.ejs") %>
+
+                        <main>
+                            <!-- <div class="searchbar main-search">
+
+                                <form action="/search" method="post">
+                                    <input type="text" placeholder="Search by Username or name">
+                                </form>
+                            </div> -->
+
+                            <div class="apidatacontainer">
+                                <ul class="apidataul">
+                                    <% for(let i=0; i < data.length; i++){%>
+                                        <li class="apidata">
+                                            <ul>
+                                                <li><span>Name :</span>  <%=data[i].full_name%>
+                                                        </>
+                                                <li><span> Open Issues :</span><%=data[i].open_issues%>
+                                                </li>
+                                                <li><span> Url :</span> <%=data[i].html_url%>
+                                                </li>
+                                                <li><span> Language :</span> <%=data[i].language%>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <%}%>
+                                </ul>
+                            </div>
+                            
+                        </main>
+                        <div class="pagenationContainer" data-page="<%=page%>">
+                            <ul>
+
+                                <% if(count>= 12){ %>
+                                    <% for(let i=1; i<=Math.ceil(count/12); i++){ %>
+                                        <li>
+                                            <a class="pageIndexLink" href="/index?page=<%=i%>&size=12">
+                                                <%= i %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                            <% } %>
+
+                            </ul>
+                        </div>
+
+                        <script>
+                            const name = document.getElementsByClassName("username")[0];
+                            name.onclick = function () {
+                                const usermenu = document.getElementsByClassName("user-menu-list")[0];
+                                if (usermenu.style.height == "auto") {
+                                    usermenu.style.height = "0"
+                                } else {
+                                    usermenu.style.height = "auto"
+                                }
+                            }
+
+                            const theme = document.getElementsByClassName("switch")[0].getAttribute("data-theme");
+                            const checkbox = document.getElementsByName("darktheme")[0]
+                            if (theme == "true") {
+                                checkbox.checked = "true";
+                            }
+                            else {
+                                checkbox.checked = null;
+
+                            }
+
+                            let pages = document.querySelector(".pagenationContainer").getAttribute("data-page");
+                            let index = document.querySelectorAll(".pageIndexLink");
+
+                            index.forEach((e) => {
+                                if (e.innerText == pages) {
+                                    e.classList.add("page-active");
+                                }
+                            })
+                        </script>
+            </body>
+
+</html>

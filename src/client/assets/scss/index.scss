@@ -1,0 +1,246 @@
+.darktheme{
+    --primarytheme : #0D1117;
+    --secondarycolor : #161B22;
+}
+body{
+    background-color: var(--primarytheme);
+}
+header{
+    background-color: var(--secondarycolor);
+}
+.username{
+    position: relative;
+    color: var(--white);
+cursor: pointer;
+    p{
+        font-family: nexa-bold;
+        text-transform: capitalize;
+        white-space: nowrap;
+        max-width: 8ch;
+        overflow: hidden;
+    }
+    i{
+        padding: 0 1rem 0 0.5rem;
+    }
+    display: flex;
+    align-items: center;
+}
+.user-menu{
+    
+    .user-menu-list{
+    position: absolute;
+    background-color: var(--white);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    right: 5%;
+    border-radius: 5px;
+    height: 0;
+    overflow: hidden;
+    li{
+        font-size: 1rem;
+        padding:1rem; 
+        cursor: pointer; 
+    }
+    li:hover{
+        // background-color: rgba(128, 128, 128, 0.1);
+        background-color: var(--filledbtn);
+        color: var(--white);
+        font-weight: bold;
+        border-radius: 5px;
+
+    }
+}
+.theme-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+}
+main{
+    padding: 2rem 1rem;
+}
+.searchbar{
+    width: 100%;
+    input{
+        border:1px solid var(--darkgrey);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    border-radius: 25px;
+margin-bottom: 0;
+    }
+}
+
+.header-search{
+    display: none;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 20px;
+    margin-left: 1rem;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+   
+    transform: translateX(14px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .apidatacontainer {
+    width: 100%;
+}
+
+.apidataul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+}
+  .apidata{
+    border: 1px solid var(--grey);
+    margin: 0.5rem 0;
+    padding: 1rem;
+    padding-bottom: 0;
+    width: 98%;
+    height: 100%;
+    li{
+        overflow-x: scroll;
+        white-space: nowrap;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+            /* Hide scrollbar for Chrome, Safari and Opera */
+li::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  li {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+    span{
+        color: var(--filledbtn);
+        font-family: nexa-bold;
+        padding-right: 1rem;
+
+    }
+  }
+
+  .pagenationContainer{
+    ul{
+        width: max-content;
+        margin: 0 auto 2.5rem;
+        display: flex;
+        
+    }
+}
+
+.pageIndexLink{
+    margin-right: 0.625rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+border: 1px solid var(--secondarycolor);
+color: var(--secondarycolor);
+transition: 0.2s ease-in;
+}
+.pageIndexLink:hover,
+.page-active{
+color: var(--white);
+background-color: var(--secondarycolor);
+
+}
+ 
+@media only screen and (min-width:1024px) { 
+nav{
+    padding: 1rem 4rem;
+}
+
+.header-left{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-search{
+    width: 80%;
+}
+
+.main-search{
+    display: none;
+}
+.header-search{
+    display: block;
+}
+.user-menu{
+    .user-menu-list{
+        li{
+            font-size: 1.2rem;
+        }
+    }
+}
+.apidata{
+    width: 32%;
+    height: 100%;
+    margin: 0.5rem;
+    li{
+        font-size: 1.2rem;
+    }
+    
+}
+.apidataul{
+  
+    display: flex;  
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 1rem 4rem;
+}
+
+}
