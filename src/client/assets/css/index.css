@@ -1,6 +1,8 @@
 .darktheme {
   --primarytheme: #0D1117;
   --secondarycolor: #161B22;
+  --textcolor: #ffffff;
+  --pagenation: #6647CD;
 }
 
 body {
@@ -13,7 +15,6 @@ header {
 
 .username {
   position: relative;
-  color: var(--white);
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -29,15 +30,17 @@ header {
   white-space: nowrap;
   max-width: 8ch;
   overflow: hidden;
+  color: var(--white);
 }
 
 .username i {
   padding: 0 1rem 0 0.5rem;
+  color: var(--white);
 }
 
 .user-menu .user-menu-list {
   position: absolute;
-  background-color: var(--white);
+  background-color: var(--primarytheme);
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   right: 5%;
@@ -183,6 +186,7 @@ input:checked + .slider:before {
 
 .apidata li {
   overflow-x: scroll;
+  overflow-y: hidden;
   white-space: nowrap;
   font-size: 1.2rem;
   margin-bottom: 1rem;
@@ -219,8 +223,8 @@ input:checked + .slider:before {
   margin-right: 0.625rem;
   border-radius: 5px;
   padding: 0.5rem;
-  border: 1px solid var(--secondarycolor);
-  color: var(--secondarycolor);
+  border: 1px solid var(--textcolor);
+  color: var(--textcolor);
   -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
@@ -228,7 +232,7 @@ input:checked + .slider:before {
 .pageIndexLink:hover,
 .page-active {
   color: var(--white);
-  background-color: var(--secondarycolor);
+  background-color: var(--pagenation);
 }
 
 @media only screen and (min-width: 1024px) {

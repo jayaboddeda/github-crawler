@@ -1,6 +1,9 @@
 .darktheme{
     --primarytheme : #0D1117;
     --secondarycolor : #161B22;
+    --textcolor : #ffffff;
+    --pagenation : #6647CD;
+
 }
 body{
     background-color: var(--primarytheme);
@@ -10,7 +13,6 @@ header{
 }
 .username{
     position: relative;
-    color: var(--white);
 cursor: pointer;
     p{
         font-family: nexa-bold;
@@ -18,9 +20,13 @@ cursor: pointer;
         white-space: nowrap;
         max-width: 8ch;
         overflow: hidden;
+    color: var(--white);
+
     }
     i{
         padding: 0 1rem 0 0.5rem;
+    color: var(--white);
+
     }
     display: flex;
     align-items: center;
@@ -29,7 +35,7 @@ cursor: pointer;
     
     .user-menu-list{
     position: absolute;
-    background-color: var(--white);
+    background-color: var(--primarytheme);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     right: 5%;
     border-radius: 5px;
@@ -150,6 +156,7 @@ margin-bottom: 0;
     height: 100%;
     li{
         overflow-x: scroll;
+        overflow-y: hidden;
         white-space: nowrap;
         font-size: 1.2rem;
         margin-bottom: 1rem;
@@ -186,14 +193,14 @@ li::-webkit-scrollbar {
     margin-right: 0.625rem;
     border-radius: 5px;
     padding: 0.5rem;
-border: 1px solid var(--secondarycolor);
-color: var(--secondarycolor);
+border: 1px solid var(--textcolor);
+color: var(--textcolor);
 transition: 0.2s ease-in;
 }
 .pageIndexLink:hover,
 .page-active{
 color: var(--white);
-background-color: var(--secondarycolor);
+background-color: var(--pagenation);
 
 }
  

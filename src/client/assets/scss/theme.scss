@@ -2,13 +2,15 @@
    --primarycolor : #342452;
    --secondarycolor : #4E3764;
    --white: #FFFFFF;
-   --primarytheme : #FFFFFF
+   --primarytheme : #FFFFFF;
    --filledbtn: #6647CD;
    --grey : #cccccc;
    --darkgrey : #636668;
    --popular_green:#008000;
     --red:#f80808;
     font-size: 16px;
+    --textcolor : #342452;
+    --pagenation : #6647CD;
 }
 
 @font-face{
@@ -27,7 +29,7 @@
 h1,h2,h3,h4,h5,h6{
     font-family: nexa-bold;
     line-height: 1.2;
-    color: var(--primarycolor);
+    color: var(--textcolor);
 }
 
 h1{
@@ -60,14 +62,14 @@ p{
     font-family: nexa-light;
     font-size: 1rem; 
     line-height: 1.4;
-    color: var(--darkblue);
+    color: var(--textcolor);
 }
 
 ul li,ol li{
     font-family: nexa-light;
     font-size: 0.9rem; 
     line-height: 1.2;
-    color: var(--darkblue);
+    color: var(--textcolor);
 }
   
 input{
@@ -77,6 +79,7 @@ input{
     font-size: 0.9rem;
     font-family: nexa-light;
     outline: none;
+    color: var(--textcolor);
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
