@@ -141,6 +141,10 @@ main {
   font-size: 1.8rem;
 }
 
+.flash-container .msg-content h5 {
+  color: var(--primarycolor);
+}
+
 .flash-container .msg-content p {
   padding-top: 2px;
   font-weight: 600;

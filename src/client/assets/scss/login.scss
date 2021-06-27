@@ -98,7 +98,9 @@ span:hover{
     }
     .msg-content {
         // padding: 0.5rem;
-        
+        h5{
+            color: var(--primarycolor);
+        }
         p {
             // font-size: 0.85rem;
             padding-top: 2px;

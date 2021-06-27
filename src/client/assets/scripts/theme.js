@@ -26,3 +26,26 @@ const name = document.getElementsByClassName("username")[0];
                                     e.classList.add("page-active");
                                 }
                             })
+
+function themepost(){
+    if(checkbox.checked == "true"){
+        var data  = {theme : "true"}
+    }
+    else{
+        var data = {theme : "false"}
+    }
+                                fetch("/themepost", {
+          
+        method: "POST",
+          
+        body: JSON.stringify(data),
+          
+        headers: {
+            "Content-type": "application/json"
+        }
+    })
+
+    const body = document.getElementsByTagName('body')[0]
+    body.classList.toggle("darktheme")
+
+}

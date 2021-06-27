@@ -68,6 +68,7 @@ const redirecthome = (req,res,next) =>{
 
 const themepost = async(req,res)=> {
 const finduser = await user.findOne({email:req.session.user.email})
+console.log(finduser + "ppp")
 if(finduser){
     if(finduser.theme == "false"){
         finduser.theme = "true";

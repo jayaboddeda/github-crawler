@@ -2,7 +2,6 @@
 var modal = document.getElementById("myModal");
 var modalcontent = document.getElementsByClassName("modal-content")[0];
 
-console.log(modalcontent)
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
