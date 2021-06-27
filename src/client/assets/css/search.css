@@ -33,8 +33,7 @@
   /* Enable scroll if needed */
   background-color: black;
   /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
+  background-color: var(--modalbackground);
 }
 
 /* Modal Content */
@@ -104,6 +103,10 @@
   margin-bottom: 0;
 }
 
+main p {
+  margin-top: 2rem;
+}
+
 @media only screen and (min-width: 768px) {
   .apidata ul {
     width: 90%;
@@ -113,6 +116,14 @@
   }
   .userinfoul li {
     font-size: 1.2rem;
+  }
+  main {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  main p {
+    margin: 0 4rem;
   }
 }
 /*# sourceMappingURL=search.css.map */

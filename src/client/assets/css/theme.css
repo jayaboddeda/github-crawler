@@ -11,6 +11,7 @@
   font-size: 16px;
   --textcolor: #342452;
   --pagenation: #6647CD;
+  --modalbackground:  rgba(0,0,0,0.4);
 }
 
 @font-face {

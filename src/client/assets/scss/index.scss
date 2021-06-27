@@ -3,6 +3,8 @@
     --secondarycolor : #161B22;
     --textcolor : #ffffff;
     --pagenation : #6647CD;
+    --modalbackground : rgba(206, 200, 200, 0.4); /* Black w/ opacity */
+   
 
 }
 body{
@@ -63,15 +65,17 @@ cursor: pointer;
 }
 main{
     padding: 2rem 1rem;
+    h1{
+    margin-top:2rem;
+    }
 }
 .searchbar{
     width: 100%;
     input{
         border:1px solid var(--darkgrey);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
     border-radius: 25px;
-margin-bottom: 0;
+    margin-bottom:0;
     }
 }
 
@@ -265,5 +269,9 @@ nav{
     align-items: center;
     margin: 1rem 4rem;
 }
-
+main{
+    h1{
+        margin-top: 0;
+    }
+}
 }

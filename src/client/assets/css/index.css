@@ -3,6 +3,8 @@
   --secondarycolor: #161B22;
   --textcolor: #ffffff;
   --pagenation: #6647CD;
+  --modalbackground: rgba(206, 200, 200, 0.4);
+  /* Black w/ opacity */
 }
 
 body {
@@ -76,6 +78,10 @@ header {
 
 main {
   padding: 2rem 1rem;
+}
+
+main h1 {
+  margin-top: 2rem;
 }
 
 .searchbar {
@@ -309,6 +315,9 @@ input:checked + .slider:before {
         -ms-flex-align: center;
             align-items: center;
     margin: 1rem 4rem;
+  }
+  main h1 {
+    margin-top: 0;
   }
 }
 /*# sourceMappingURL=index.css.map */
