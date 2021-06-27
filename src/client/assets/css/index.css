@@ -180,11 +180,35 @@ input:checked + .slider:before {
   padding-bottom: 0;
   width: 98%;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   /* Hide scrollbar for Chrome, Safari and Opera */
   /* Hide scrollbar for IE, Edge and Firefox */
 }
 
-.apidata li {
+.apidata figure {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.apidata figure img {
+  border-radius: 50%;
+}
+
+.apidata ul {
+  width: 90%;
+}
+
+.apidata ul li {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -264,7 +288,7 @@ input:checked + .slider:before {
     font-size: 1.2rem;
   }
   .apidata {
-    width: 32%;
+    width: 48%;
     height: 100%;
     margin: 0.5rem;
   }

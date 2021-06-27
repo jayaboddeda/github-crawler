@@ -1,0 +1,46 @@
+<header>
+    <nav>
+        <div class="header-left">
+            <figure class="logo">
+                <img src="../assets/images/GitHub_desktop_logo.png" alt="logo">
+            </figure>
+
+            <div class="searchbar header-search">
+
+                <form action="/search" method="post">
+                    <input type="text" name="username" placeholder="Search by Username or name" >
+                <button style="display: none;"></button>
+                </form>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="username">
+                <p>
+                    <%= user.name %>
+                </p>
+                <i class="fas fa-angle-down"></i>
+            </div>
+            <div class="user-menu">
+                <ul class="user-menu-list">
+                    <li class="theme-btn">
+                        <form action="/themepost" method="post">
+
+                            <span>Dark Theme</span>
+                            <label class="switch" data-theme=<%=user.theme%>>
+
+                                <input name="darktheme" type="checkbox"
+                                    onchange="this.form.submit()">
+                                <span class="slider round"></span>
+                            </label>
+                        </form>
+
+                    </li>
+
+                    <a href="/logout">
+                        <li>Logout</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

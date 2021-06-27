@@ -23,73 +23,33 @@
 
             <body>
                 <% } %>
-                    <header>
-                        <nav>
-                            <div class="header-left">
-                                <figure class="logo">
-                                    <img src="../assets/images/GitHub_desktop_logo.png" alt="logo">
-                                </figure>
 
-                                <!-- <div class="searchbar header-search">
-
-                                    <form action="/search" method="post">
-                                        <input type="text" placeholder="Search by Username or name">
-                                    </form>
-                                </div> -->
-                            </div>
-                            <div class="header-right">
-                                <div class="username">
-                                    <p>
-                                        <%= user.name %>
-                                    </p>
-                                    <i class="fas fa-angle-down"></i>
-                                </div>
-                                <div class="user-menu">
-                                    <ul class="user-menu-list">
-                                        <li class="theme-btn">
-                                            <form action="/themepost" method="post">
-
-                                                <span>Dark Theme</span>
-                                                <label class="switch" data-theme=<%=user.theme%>>
-
-                                                    <input name="darktheme" type="checkbox"
-                                                        onchange="this.form.submit()">
-                                                    <span class="slider round"></span>
-                                                </label>
-                                            </form>
-
-                                        </li>
-
-                                        <a href="/logout">
-                                            <li>Logout</li>
-                                        </a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                    </header>
+                    <%-include("partials/header.ejs") %>
                     <%-include("partials/alerts.ejs") %>
 
                         <main>
-                            <!-- <div class="searchbar main-search">
+                            <div class="searchbar main-search">
 
                                 <form action="/search" method="post">
-                                    <input type="text" placeholder="Search by Username or name">
+                                    <input type="text" name="username" placeholder="Search by Username or name">
                                 </form>
-                            </div> -->
+                            </div>
 
                             <div class="apidatacontainer">
                                 <ul class="apidataul">
-                                    <% for(let i=0; i < data.length; i++){%>
+
+                                    <% for(let i=0; i < trendingrepos.length; i++){%>
                                         <li class="apidata">
                                             <ul>
-                                                <li><span>Name :</span>  <%=data[i].full_name%>
-                                                        </>
-                                                <li><span> Open Issues :</span><%=data[i].open_issues%>
+                                                <li><span>Title :</span>  <%=trendingrepos[i].repotitle%>
                                                 </li>
-                                                <li><span> Url :</span> <%=data[i].html_url%>
+                                                <li><span> About :</span><%=trendingrepos[i].aboutrepo%>
                                                 </li>
-                                                <li><span> Language :</span> <%=data[i].language%>
+                                                <li><span>Stars :</span> <%=trendingrepos[i].repostars%>
+                                                </li>
+                                                <li><span>Forks :</span> <%=trendingrepos[i].repoforks%>
+                                                </li>
+                                                <li><span> Language :</span> <%=trendingrepos[i].repolanguage%>
                                                 </li>
                                             </ul>
                                         </li>
@@ -98,52 +58,7 @@
                             </div>
                             
                         </main>
-                        <div class="pagenationContainer" data-page="<%=page%>">
-                            <ul>
-
-                                <% if(count>= 12){ %>
-                                    <% for(let i=1; i<=Math.ceil(count/12); i++){ %>
-                                        <li>
-                                            <a class="pageIndexLink" href="/index?page=<%=i%>&size=12">
-                                                <%= i %>
-                                            </a>
-                                        </li>
-                                        <% } %>
-                                            <% } %>
-
-                            </ul>
-                        </div>
-
-                        <script>
-                            const name = document.getElementsByClassName("username")[0];
-                            name.onclick = function () {
-                                const usermenu = document.getElementsByClassName("user-menu-list")[0];
-                                if (usermenu.style.height == "auto") {
-                                    usermenu.style.height = "0"
-                                } else {
-                                    usermenu.style.height = "auto"
-                                }
-                            }
-
-                            const theme = document.getElementsByClassName("switch")[0].getAttribute("data-theme");
-                            const checkbox = document.getElementsByName("darktheme")[0]
-                            if (theme == "true") {
-                                checkbox.checked = "true";
-                            }
-                            else {
-                                checkbox.checked = null;
-
-                            }
-
-                            let pages = document.querySelector(".pagenationContainer").getAttribute("data-page");
-                            let index = document.querySelectorAll(".pageIndexLink");
-
-                            index.forEach((e) => {
-                                if (e.innerText == pages) {
-                                    e.classList.add("page-active");
-                                }
-                            })
-                        </script>
+                       <script src="../assets/scripts/theme.js"></script>
             </body>
 
 </html>

@@ -77,8 +77,6 @@ if(finduser){
         finduser.theme = "false"
         req.session.user.theme = "false";
     }
-    console.log(finduser.theme)
-    console.log(req.session.user.theme)
     await finduser.save()
     res.redirect("/index")
 }

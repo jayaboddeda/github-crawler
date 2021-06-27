@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Crawler</title>
+    <link rel="icon" href="../assets/images/GitHub_desktop_logo.png">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/theme.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/search.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+</head>
+<%if (user.theme=="true" ) {%>
+
+    <body class="darktheme">
+
+        <% }else{%>
+
+            <body>
+                <% } %>
+
+                    <%-include("partials/header.ejs") %>
+                        <%-include("partials/alerts.ejs") %>
+
+                            <main>
+                                <div class="searchbar main-search">
+
+                                    <form action="/search" method="post">
+                                        <input name="username" type="text" placeholder="Search by Username or name" value="<%=searchterm ? searchterm : ''%> ">
+                                        <button style="display: none;"></button>
+
+                                    </form>
+                                </div>
+
+                                <div class="apidatacontainer">
+                                    <ul class="apidataul">
+                                        <% for(let i=0; i < searchresult.length; i++){%>
+                                            <li class="apidata" onclick="userinfo('<%=searchresult[i].username%>')">
+                                                <figure>
+                                                    <img src="<%=searchresult[i].userimage%>" alt="user image">
+                                                </figure>
+                                                <ul>
+                                                    <li><span>Name :</span>
+                                                        <%=searchresult[i].name%>
+                                                    </li>
+                                                    <li><span> User Name :</span>
+                                                        <%=searchresult[i].username%>
+                                                    </li>
+                                                    <li><span>Location :</span>
+                                                        <%=searchresult[i].userlocation%>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <%}%>
+                                    </ul>
+                                </div>
+
+                            </main>
+
+                            <div id="myModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                </div>
+                            </div>
+
+                          <div class="pagenationContainer" data-page="1">
+                            <ul>
+
+                                    <% for(let i=1; i<=5; i++){ %>
+                                        <li>
+                                            <a class="pageIndexLink" href="/search?page=<%=i%>&username=<%=searchterm%>">
+                                                <%= i %>
+                                            </a>
+                                        </li>
+                                        <% } %>
+
+                            </ul>
+                        </div>
+
+                                
+
+                            <script src="../assets/scripts/theme.js"></script>
+                            <script src="../assets/scripts/search.js"></script>
+
+            </body>
+
+</html>

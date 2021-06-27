@@ -154,13 +154,29 @@ margin-bottom: 0;
     padding-bottom: 0;
     width: 98%;
     height: 100%;
-    li{
-        overflow-x: scroll;
-        overflow-y: hidden;
-        white-space: nowrap;
-        font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    figure{
+        width: 4rem;
+        height: 4rem;
+        margin-right: 1rem;
         margin-bottom: 1rem;
+        img{
+            border-radius: 50%;
+        }
     }
+    ul{
+        width: 90%;
+        li{
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+    }
+    
     
             /* Hide scrollbar for Chrome, Safari and Opera */
 li::-webkit-scrollbar {
@@ -233,7 +249,7 @@ nav{
     }
 }
 .apidata{
-    width: 32%;
+    width: 48%;
     height: 100%;
     margin: 0.5rem;
     li{

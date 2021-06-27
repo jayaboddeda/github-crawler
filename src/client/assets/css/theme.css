@@ -83,7 +83,6 @@ input {
   font-size: 0.9rem;
   font-family: nexa-light;
   outline: none;
-  color: var(--textcolor);
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {

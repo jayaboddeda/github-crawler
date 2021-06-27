@@ -24,7 +24,7 @@ app.set("view engine", "ejs");
 app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, '/client')));
 
-// app.use('/css', express.static(__dirname+"client/assets/css/")); 
+app.use('/css', express.static(__dirname+"client/assets/css/")); 
 // app.use('/js', express.static(__dirname+"client/views/js/")); 
 
 
@@ -51,13 +51,14 @@ app.use(session({
 
   app.use("/", htmlRoutes);
 
-mongoose.connect("mongodb+srv://tvastra:tvastra@gitcrawlercluster.0jsif.mongodb.net/gitcrawlerdb?retryWrites=true&w=majority",{
+mongoose.connect("mongodb+srv://tvastra:tvastra@gitcrawlercluster1.0jsif.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
   useNewUrlParser:true,
   useCreateIndex:true,
   useUnifiedTopology:true
 }).then(()=>{
   console.log('connection successful')
 }).catch((e) =>{
+  console.log(e)
   console.log('No Connection');
 })
 
