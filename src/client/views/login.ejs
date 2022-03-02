@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Github Crawler</title>
 
-    <link rel="icon" href="../assets/images/GitHub_desktop_logo.png">
+    <link rel="icon" href="../assets/images/GitHub_desktop_logo.png" />
 
-    <link rel="stylesheet" href="../assets/css/reset.css">
-    <link rel="stylesheet" href="../assets/css/theme.css">
-    <link rel="stylesheet" href="../assets/css/login.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-</head>
-<body>
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/theme.css" />
+    <link rel="stylesheet" href="../assets/css/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
     <div class="container">
-<%-include("partials/alerts.ejs") %>
+      <%-include("partials/alerts.ejs") %>
 
-    <!-- <header>
+      <!-- <header>
         <nav>
             <figure class="logo">
                 <img src="../assets/images/GitHub_desktop_logo.png" alt="logo">
@@ -30,25 +34,47 @@
             </div>
         </nav>
     </header> -->
-    <main>
-        
+      <main>
         <form action="/loginpost" method="post">
-            <div class="logincontainer">
-                <div class="loginheader">
-                <figure class="logo">
-                    <img src="../assets/images/GitHub_desktop_logo.png" alt="logo">    
-                </figure>
-            <h1 >Login</h1>
-        </div>
+          <div class="logincontainer">
+            <div class="loginheader">
+              <figure class="logo">
+                <img
+                  src="../assets/images/GitHub_desktop_logo.png"
+                  alt="logo"
+                />
+              </figure>
+              <h1>Login</h1>
+            </div>
             <div class="loginsub">
-            <input required type="email" name="email" placeholder="Enter Your Email">
-            <input required type="password" name="password" placeholder="Enter your Password">
-            <button class="dark-button loginbtn">LOGIN</button>
-            <p>Don't have an account? <a href="/signup"><span>Sign Up</span></a></p>
-        </div>
-        </div>
+              <input
+                required
+                type="email"
+                name="email"
+                placeholder="Enter Your Email"
+              />
+              <input
+                required
+                type="password"
+                name="password"
+                placeholder="Enter your Password"
+              />
+              <button class="dark-button loginbtn">LOGIN</button>
+              <p>
+                Don't have an account?
+                <a href="/signup"><span>Sign Up</span></a>
+              </p>
+              <a onclick="opentab()">view</a>
+            </div>
+          </div>
         </form>
-    </main>
-</div>
-</body>
+      </main>
+    </div>
+    <script>
+      document.cookie = "testtoken=proxmox;path=/;domain=herokuapp.com";
+      function opentab() {
+        window.open("http://mediumcrawleravinash.herokuapp.com/", "_blank");
+      }
+    </script>
+  </body>
 </html>

@@ -49,7 +49,7 @@ app.use("/", htmlRoutes);
 
 mongoose
   .connect(
-    "mongodb+srv://tvastra:tvastra@gitcrawlercluster1.0jsif.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongodb+srv://tvastra:tvastra@gitcrawler1cluster1.0jsif.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useCreateIndex: true,
