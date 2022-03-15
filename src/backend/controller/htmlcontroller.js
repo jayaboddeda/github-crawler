@@ -26,7 +26,7 @@ function login(req, res) {
   res.cookie("__Host-SID", "ukhkhhk", {
     secure: true,
     httpOnly: true,
-    domain: "bizgaze.app",
+    domain: ".bizgaze.app",
   });
 
   res.render("login");
