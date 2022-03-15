@@ -23,7 +23,7 @@ function login(req, res) {
   //     .catch(function (error) {
   //       console.log(error);
   //     });
-  res.cookie("__Host-SID", "ukhkhhk", {
+  res.cookie("__HostSID", "ukhkhhk", {
     secure: true,
     httpOnly: true,
     domain: ".bizgaze.app",
