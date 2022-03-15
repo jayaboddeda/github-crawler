@@ -23,7 +23,7 @@ function login(req, res) {
   //     .catch(function (error) {
   //       console.log(error);
   //     });
-  res.cookie("__HostSID", "ukhkhhk", {
+  res.cookie("__Host-SID", "ukhkhhk", {
     secure: true,
     httpOnly: true,
   });
