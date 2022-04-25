@@ -1,6 +1,8 @@
 const fetch = require("node-fetch");
 const cheerio = require("cheerio");
-
+var axios = require('axios');
+var qs = require('qs');
+const https = require('https');
 // const api = async(req,res,next)=>{
 //     let page = req.query.page
 //     let per_page = req.query.size
@@ -175,47 +177,102 @@ const fetchuserinfo = async (req, res) => {
 
 
 const bmcsensor = async (req,res) => {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-  
-  var urlencoded = new URLSearchParams();
-  urlencoded.append("name", "root");
-  urlencoded.append("pwd", "Bizgaze@123");
-  urlencoded.append("encodedpwd", "Qml6Z2F6ZUAxMjM=");
-  
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: urlencoded,
-    redirect: 'follow'
-  };
-  
-  fetch("https://intelbmc.bizgaze.com/cgi/login.cgi", requestOptions)
-    .then(response => response.text())
-    .then(result => {
-      console.log(result)
-      var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/xml");
 
-var raw = "<?xml version=\"1.0\"?>\r\n<IPMI>\r\n    <REQUEST>GENERATE</REQUEST></IPMI>";
+  console.log('hi')
+  const instance = axios.create({
+    httpsAgent: new https.Agent({  
+      rejectUnauthorized: false
+    })
+  });
+  
+  instance.get('https://intelbmc.bizgaze.com/cgi/login.cgi');
+  
+  // At request level
+  const agent = new https.Agent({  
+    rejectUnauthorized: false
+  });
+  
 
-var requestOptions = {
-  method: 'PUT',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
+var data = qs.stringify({
+  'name': 'root',
+  'pwd': 'Bizgaze@123',
+  'encodedpwd': 'Qml6Z2F6ZUAxMjM=' 
+});
+var config = {
+  method: 'post',
+  url: 'https://intelbmc.bizgaze.com/cgi/login.cgi',
+  headers: { 
+    'Content-Type': 'application/x-www-form-urlencoded', 
+  },
+  data : data,
+  httpsAgent:agent
 };
 
-fetch("https://intelbmc.bizgaze.com/cgi/csrf_tokens.cgi", requestOptions)
-  .then(response => response.text())
-  .then(result => {
-    console.log(result)
-    
+axios(config)
+.then(function (response) {
+  let setcookieheader = response.headers['set-cookie'][1];
+  console.log(setcookieheader);
+  let splitheader = setcookieheader.split(';')
+  let hostsid = splitheader[0].split('=')[1]
+  console.log(hostsid)
+
   
+  var data = '<?xml version="1.0"?>\r\n<IPMI>\r\n    <REQUEST>GENERATE</REQUEST></IPMI>';
+  
+  var config = {
+    method: 'put',
+    url: 'https://intelbmc.bizgaze.com/cgi/csrf_tokens.cgi',
+    headers: { 
+      'Content-Type': 'application/xml', 
+      'Cookie': '__Host-SID='+hostsid
+    },
+    data : data,
+    httpsAgent:agent
+  };
+  
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+    let result = JSON.stringify(response.data)
+    let token = result.substring(
+      result.indexOf("<TOKEN>") + 7, 
+      result.lastIndexOf("</TOKEN>")
+  );
+  console.log(token)
+
+var data = '<?xml version="1.0"?>\r\n<IPMI>\r\n    <LANG>English</LANG>\r\n    <TOKEN>'+token+'</TOKEN>\r\n    <PRIV>04</PRIV>\r\n</IPMI>';
+
+var config = {
+  method: 'post',
+  url: 'https://intelbmc.bizgaze.com/cgi/getsensorinfo.cgi',
+  headers: { 
+    'Content-Type': 'application/xml', 
+    'Cookie': '__Host-PAM_AUTH=1; __Host-SID='+hostsid
+  },
+  data : data,
+  httpsAgent:agent
+};
+
+axios(config)
+.then(function (response) {
+  // console.log(JSON.stringify(response.data));
+  res.send(response.data)
+})
+.catch(function (error) {
+  console.log(error);
+});
+
   })
-  .catch(error => console.log('error', error));
-    })
-    .catch(error => console.log('error', error));
+  .catch(function (error) {
+
+    console.log(error);
+  });
+  
+})
+.catch(function (error) {
+  console.log(error);
+});
+
 }
 
 module.exports = {
