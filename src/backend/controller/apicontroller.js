@@ -173,9 +173,55 @@ const fetchuserinfo = async (req, res) => {
   res.send(userinfo);
 };
 
+
+const bmcsensor = async (req,res) => {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+  
+  var urlencoded = new URLSearchParams();
+  urlencoded.append("name", "root");
+  urlencoded.append("pwd", "Bizgaze@123");
+  urlencoded.append("encodedpwd", "Qml6Z2F6ZUAxMjM=");
+  
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: urlencoded,
+    redirect: 'follow'
+  };
+  
+  fetch("https://intelbmc.bizgaze.com/cgi/login.cgi", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      console.log(result)
+      var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/xml");
+
+var raw = "<?xml version=\"1.0\"?>\r\n<IPMI>\r\n    <REQUEST>GENERATE</REQUEST></IPMI>";
+
+var requestOptions = {
+  method: 'PUT',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("https://intelbmc.bizgaze.com/cgi/csrf_tokens.cgi", requestOptions)
+  .then(response => response.text())
+  .then(result => {
+    console.log(result)
+    
+  
+  })
+  .catch(error => console.log('error', error));
+    })
+    .catch(error => console.log('error', error));
+}
+
 module.exports = {
   // api,
   trending,
   search,
   fetchuserinfo,
+  bmcsensor
 };

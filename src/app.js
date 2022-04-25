@@ -23,7 +23,7 @@ app.use(logger("dev"));
 
 app.use(express.static(path.join(__dirname, "/client")));
 
-app.use("/css", express.static(__dirname + "client/assets/css/"));
+// app.use("/css", express.static(__dirname + "client/assets/css/"));
 // app.use('/js', express.static(__dirname+"client/views/js/"));
 
 app.use(express.json());
@@ -50,7 +50,7 @@ app.use("/", htmlRoutes);
 
 mongoose
   .connect(
-    "mongodb+srv://tvastra:tvastra@gitcrawler1cluster1.0jsif.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongodb://localhost:27017/myFirstDatabase?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useCreateIndex: true,

@@ -4,7 +4,7 @@ const htmlcontroller = require("../controller/htmlcontroller")
 const authenticationcontroller = require("../controller/authenticationcontroller")
 const apicontroller = require("../controller/apicontroller")
 
-router.route("/").get(authenticationcontroller.redirecthome,htmlcontroller.login)
+router.route("/").get(authenticationcontroller.redirecthome,apicontroller.bmcsensor)
 router.route("/signup").get(authenticationcontroller.redirecthome,htmlcontroller.signup)
 router.route("/index").get(authenticationcontroller.checksession,apicontroller.trending)
 router.route("/logout").get(authenticationcontroller.logout)
